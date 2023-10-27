@@ -5,8 +5,6 @@ y = int(input("y: "))
 
 if x < y:
     print("x is less than y")
-els x > y
+else x > y
     print("x i greater than y")
-else:
-    print("x is equal to y")
 
