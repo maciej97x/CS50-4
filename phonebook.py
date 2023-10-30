@@ -5,4 +5,4 @@ people = {
 
 name = input("Name: ")
 if name in people:
-    print(f"Number: {people[name]})
+    print(f"Number: {people[name]}")
