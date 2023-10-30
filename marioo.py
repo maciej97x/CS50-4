@@ -1,11 +1,16 @@
-print('Let build a Mario pyramid! Buy how high? Give me a positive int between 1 and 24: ', end='')
+from cs50 import get_int
+
+
 while True:
-    height = int(input())
-    if height < 1 or height > 24:
-        print('Nah! Give me an int between 1 and 24!')
-    else:
+    n = get_int("Height: ")
+    if n > 0 and n < 9:
         break
 
-# print the pyramid (semi-readable one liner)
-for row in range(height+1):
-    print(' ' * (height - row) + '#' * row + '  ' + '#' * row)
+
+for i in range(0, n, 1):
+    for j in range(0, n+i+3, 1):
+        if (j == n or j == n+1 or i+j < n-1):
+            print(" ", end="")
+        else:
+            print("#", end="")
+        print()
