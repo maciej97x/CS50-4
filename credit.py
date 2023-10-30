@@ -1,62 +1,53 @@
-from cs50 import get_string, get_int
+from cs50 import get_int
 
-while True:
-    # Get a credit card number from the user while he/she doesn't cooperate
-    number = get_int("Number: ")
-    if number < 0:
-        print("The number must be an integer!")
-    else:
-        break
+def main():
 
-# Initialize to zero some varibles we will need
-last = digits = sum_of_odds = sum_of_evens = 0
+    while True:
+        credit_card = get_int("Credit Card Number: ")
+        if credit_card >= 0:
+            break
 
-# The number will decrease until it becomes a float type number, so the result of 'number / 10' will
-# be zero, since, for instance, with integers, 1 / 10 = 0
-while number > 0:
-    # We are "reading" the number from right to left, so the first number is the last one, and so on.
-    digits += 1
-
-    # Store the second last digit for the end
-    sec_last = last
-
-    # This gives us the last digit of the number
-    last = number % 10
-
-    # The second-to-last digits (i.e, the second, forth, sixth... from right to left)
-    if digits % 2 == 0:
-        # Do the Luhn’s Algorithm
-        multiplier = last * 2
-
-        if multiplier >= 10:
-            n1 = multiplier // 10
-            n2 = multiplier % 10
-            multiplier = n1 + n2
-
-        sum_of_evens += multiplier
-    else:
-        # So we have the odd numbers, i.e., the first, third, fifth, etc, from right to left
-        sum_of_odds += last
-
-    # Now that we have the last digit, lets reduce the number by one digit (e.g. 123 becomes 12)
-    number = number // 10
-
-# Sometimes its required to know the 'firsts' digits of the whole number, i.e the first and the second one
-# from left to right
-firsts = (last * 10) + sec_last
-
-# Sum the sums
-total_sum = sum_of_evens + sum_of_odds
-
-# That final sum must have the last digit as been a zero, i.e 10, 50 or 80 would be a valid value, whereas 89 not
-if total_sum % 10 == 0:
-    # Check for each credit card identification and then print it's name, e.g., MASTERCARD
-    if (digits == 13 or digits == 16) and last == 4:
-        print("VISA")
-    elif digits == 15 and (firsts == 34 or firsts == 37):
-        print("AMEX")
-    elif digits == 16 and (firsts >= 51 and firsts <= 55):
-        print("MASTERCARD")
+    if check(credit_card):
+            print_brand(credit_card)
     else:
         print("INVALID")
-else:
+
+def check(ccn):
+    return checksum(ccn)
+
+
+def checksum(ccn):
+
+    sum = 0
+    for i in range(len(str(ccn))):
+        if (i % 2 == 0):
+            sum += ccn % 10
+        else:
+            digit = 2 * (ccn % 10)
+            sum += digit // 10 + digit % 10
+
+        ccn //= 10
+
+    return sum % 10 == 0
+
+def print_brand(ccn):
+
+    if ((ccn >= 34e13 and ccn < 35e13) or (ccn >= 37e13 and ccn < 38e13)):
+        print("AMEX")
+
+
+    elif (ccn >= 51e14) and (ccn < 56e14):
+        print("MASTERCARD")
+
+
+    elif (ccn >= 4e12 and ccn < 5e12) or (ccn >= 4e13 and ccn < 5e13) or (ccn >= 4e14 and ccn < 5e14) or (ccn >= 4e15 and ccn < 5e15):
+        print("VISA")
+
+    else:
+        print("INVALID")
+
+
+
+
+if __name__ == "__main__":
+    main()
