@@ -1,6 +1,6 @@
 import csv
 
-file = open("phonebook.csv", "a")
+file = open("phonebook.csv", "r")
 
 name = input("Name: ")
 number = input("Number: ")
