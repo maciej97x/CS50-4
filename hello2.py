@@ -1,2 +1,2 @@
-answer = input("What's your name?\n")
-print("hello,", answer)
+answer = input("Name: ")
+print(f"Hello, {answer}")
