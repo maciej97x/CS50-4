@@ -3,7 +3,6 @@ def main():
     for i in range(height):
         print("#")
 
-
 def get_height():
     while True:
         try:
@@ -12,6 +11,5 @@ def get_height():
                 return n
         except ValueError:
             print("Not an integer")
-
 
 main()
