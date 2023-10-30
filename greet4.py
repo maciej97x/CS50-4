@@ -1,4 +1,4 @@
 from sys import argv
 
-for arg in argv [0:1]:
+for arg in argv [0:3]:
     print(arg)
