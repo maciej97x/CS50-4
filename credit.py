@@ -1,9 +1,7 @@
-from cs50 import get_int
-
 def main():
 
     while True:
-        credit_card = get_int("Credit Card Number: ")
+        credit_card = int(input("Credit Card Number: "))
         if credit_card >= 0:
             break
 
