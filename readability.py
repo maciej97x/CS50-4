@@ -1,6 +1,5 @@
-from cs50 import get_string
 
-text = get_string("Text: ")
+text = int(input("Text: "))
 numOfLetters = 0
 numOfWords = 1
 numOfSentences = 0
