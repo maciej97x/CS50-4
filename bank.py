@@ -1,1 +1,3 @@
-ask = int(input("ask: "))
+ask = input("ask: ")
+
+ask = "h"
