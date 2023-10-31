@@ -1,0 +1,1 @@
+ask = int(input("ask: "))
