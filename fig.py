@@ -15,7 +15,7 @@ def main():
     while True:
         try:
             # Ask for an item
-            item = input("Item: ").title()
+            item = input("Item: ")
             # Check the presence of the item in the menu
             if item in menu:
                 # Compute the total
