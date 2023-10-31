@@ -4,7 +4,7 @@ while True:
         break
 
 for i in range(0, n, 1):
-    for j in range (0, n+i+4, 1):
+    for j in range (0, n, 1):
         if (i+j < n - 1):
             print(" ", end="")
         else:
