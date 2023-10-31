@@ -1,36 +1,29 @@
-import sys
+def main():
+    menu = {
+        "Baja Taco": 4.00,
+        "Burrito": 7.50,
+        "Bowl": 8.50,
+        "Nachos": 11.00,
+        "Quesadilla": 8.50,
+        "Super Burrito": 8.50,
+        "Super Quesadilla": 9.50,
+        "Taco": 3.00,
+        "Tortilla Salad": 8.00,
+    }
 
-from pyfiglet import Figlet
+    total = 0
+    while True:
+        try:
+            # Ask for an item
+            item = input("Item: ").title()
+            # Check the presence of the item in the menu
+            if item in menu:
+                # Compute the total
+                total += menu[item]
+                print(f"Total: ${total:.2f}")
+        except EOFError:
+            print()
+            break
 
 
-# Manage a bad exit
-def bad_exit():
-    print("Invalid usage")
-    sys.exit(1)
-
-
-# Figlet object
-figlet = Figlet()
-
-# Check command-line arguments
-argc = len(sys.argv)
-
-if argc != 3 and argc != 1:
-    bad_exit()
-elif argc == 3:
-    opt = sys.argv[1]
-    font = sys.argv[2]
-
-    # Check the option argument
-    if opt not in ["-f", "--font"]:
-        bad_exit()
-
-    # Set the font
-    if str(font) in figlet.getFonts():
-        figlet.setFont(font=font)
-    else:
-        bad_exit()
-
-# Prompt
-str = input("Input: ")
-print("Output:\n", figlet.renderText(str))
+main()
