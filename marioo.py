@@ -1,4 +1,3 @@
-
 while True:
     n = int(input("Height: "))
     if n > 0 and n < 9:
