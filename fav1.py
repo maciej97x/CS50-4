@@ -12,5 +12,5 @@ with open("2018.csv", "r") as file:
 def get_value(team):
     return counts[team]
 
-for best in counts:
+for best in sorted(counts, key=get_value, reverse=True):
     print(f"{best}: {counts[best]}")
