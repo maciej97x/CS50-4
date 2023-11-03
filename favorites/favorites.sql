@@ -1,1 +1,1 @@
-UPDATE show SET title = "How I Met Your Mother" WHERE title = "How i met your mother";
+UPDATE show SET title = "How I Met Your Mother" WHERE title LIKE "How i met your mother";
