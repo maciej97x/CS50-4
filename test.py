@@ -1,6 +1,6 @@
 from cs50 import SQL
 
-db = SQL("sqlite:///roster.db")
+db = SQL("sqlite:///st.db")
 
 roster = input("State: ")
 
